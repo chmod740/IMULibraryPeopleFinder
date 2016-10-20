@@ -25,9 +25,12 @@ right=detail&classkind=8&room_id=100485887&name=1B%E5%8C%BA&open_start=730
 &open_end=2200classkind&date=2016-10-20&start=14:05&end=14:25&fr_start=14:05
 &fr_end=14:25&act=get_dev_coord&_nocache=1476944137372
 """
+class Student:
+    id = ''
+    seat = ''
+    name = ''
 
-
-def get_lib_seats_info(room_id, name=''):
+def send_request(room_id, name=''):
     # name = '1B%E5%8C%BA'
     http = Http()
     url = 'http://202.207.7.180:8081/ClientWeb/pro/ajax/device.aspx?'
@@ -44,25 +47,69 @@ def get_lib_seats_info(room_id, name=''):
     param = param.replace("{{time}}", str(int(time.time()*1000)))
     param = param.replace("{{name}}", str(name))
     url = url + param
-    print(url)
+    # print(url)
     response, conetent = http.request(uri=url, method='GET')
 
-    print(conetent.decode('utf-8'))
+    # print(conetent.decode('utf-8'))
+    return conetent.decode('utf-8')
 
-# 1B
-get_lib_seats_info("100485887")
-# 2B1
-get_lib_seats_info("100485889")
-# 2B2
-get_lib_seats_info("100485891")
-# 2A
-get_lib_seats_info("100485893")
-# 3b1
-get_lib_seats_info("100485895")
-# 3b2
-get_lib_seats_info("100485897")
-# 3A
-get_lib_seats_info("100485899")
+def get_seat_info_dict():
+
+    list = []
+    # 1B
+    temp_list = analyze_result(send_request("100485887"))
+
+    list.extend(temp_list)
+
+    temp_list = analyze_result(send_request("100485889"))
+
+    list.extend(temp_list)
+
+    temp_list = analyze_result(send_request("100485891"))
+
+    list.extend(temp_list)
+
+    temp_list = analyze_result(send_request("100485893"))
+
+    list.extend(temp_list)
+
+    temp_list = analyze_result(send_request("100485895"))
+
+    list.extend(temp_list)
+
+    temp_list = analyze_result(send_request("100485897"))
+
+    list.extend(temp_list)
+
+    temp_list = analyze_result(send_request("100485899"))
+
+    list.extend(temp_list)
+
+    return list
+def analyze_result(content):
+    content = str(content).replace("null", "\"null\"")
+    content = str(content).replace("false", "\"false\"")
+    content = content.replace('true', "\"true\"")
+    data = eval(content).get('data')
+    students = []
+    for element in data:
+        if len(element.get('ts')) == 0 :
+            continue
+        if element.get('ts')[0].get('owner') == "null":
+            name = element.get('ts')[0].get('owner')
+            print(name)
+            continue
+        student = Student()
+        student.id = element.get('id')
+        student.name = element.get('ts')[0].get('owner')
+        student.seat = element.get('title')
+        students.append(student)
+    return students
+
 """
-一个Python模块用于在内蒙古大学寻找一个人有没有在图书馆之中
+main
 """
+for student in get_seat_info_dict():
+    print(student.id)
+    print(student.name)
+    print(student.seat)
