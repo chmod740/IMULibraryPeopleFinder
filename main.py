@@ -110,6 +110,7 @@ def analyze_result(content):
 main
 """
 for student in get_seat_info_dict():
-    print(student.id)
-    print(student.name)
-    print(student.seat)
+    print("id:" + student.id)
+    print("name:" + student.name)
+    print("seat:" + student.seat)
+    print('\n')
