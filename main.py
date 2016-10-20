@@ -1,30 +1,7 @@
 import time
 from httplib2 import Http
-"""
-http://202.207.7.180:8081/ClientWeb/pro/ajax/device.aspx?\
-right=detail&classkind=8&room_id=100485887&name=1B%E5%8C%BA&open_start=730
-&open_end=2200classkind&date=2016-10-20&start=13:40&end=14:40&fr_start=13:40
-&fr_end=14:40&act=get_dev_coord&_nocache=1476941649431
-"""
 
-"""
-GET http://202.207.7.180:8081/ClientWeb/pro/ajax/device.aspx?
-right=detail&classkind=8&room_id=100485887&name=1B%E5%8C%BA&open_start=730
-&open_end=2200classkind&date=2016-10-20&start=13:40&end=14:40&fr_start=14:30
-&fr_end=14:40&act=get_rsv_sta&_nocache=1476944925867
 
-"""
-"""
-http://202.207.7.180:8081/ClientWeb/pro/ajax/device.aspx?
-right=detail&classkind=8&room_id=100485887&name=1B%E5%8C%BA&open_start=730
-&open_end=2200classkind&date=2016-10-20&start=14:13&end=15:23&fr_start=13:23
-&fr_end=14:33&act=get_dev_coord&_nocache=1476944590906
-"""
-"""
-right=detail&classkind=8&room_id=100485887&name=1B%E5%8C%BA&open_start=730
-&open_end=2200classkind&date=2016-10-20&start=14:05&end=14:25&fr_start=14:05
-&fr_end=14:25&act=get_dev_coord&_nocache=1476944137372
-"""
 class Student:
     id = ''
     seat = ''
