@@ -102,7 +102,7 @@ def analyze_result(content):
         student = Student()
         student.id = element.get('id')
         student.name = element.get('ts')[0].get('owner')
-        student.seat = element.get('title')
+        student.seat = element.get('labName') + " " + element.get('title')
         students.append(student)
     return students
 
