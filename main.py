@@ -49,10 +49,20 @@ def get_lib_seats_info(room_id, name=''):
 
     print(conetent.decode('utf-8'))
 
-
-
+# 1B
 get_lib_seats_info("100485887")
-
+# 2B1
+get_lib_seats_info("100485889")
+# 2B2
+get_lib_seats_info("100485891")
+# 2A
+get_lib_seats_info("100485893")
+# 3b1
+get_lib_seats_info("100485895")
+# 3b2
+get_lib_seats_info("100485897")
+# 3A
+get_lib_seats_info("100485899")
 """
 一个Python模块用于在内蒙古大学寻找一个人有没有在图书馆之中
 """
