@@ -1,0 +1,2 @@
+# IMULibraryPeopleFinder
+一个Python模块用于在内蒙古大学寻找一个人有没有在图书馆之中
