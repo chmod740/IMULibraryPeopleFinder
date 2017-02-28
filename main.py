@@ -70,7 +70,7 @@ def analyze_result(content):
     data = eval(content).get('data')
     students = []
     for element in data:
-        if len(element.get('ts')) == 0 :
+        if len(element.get('ts')) == 0:
             continue
         if element.get('ts')[0].get('owner') == "null":
             name = element.get('ts')[0].get('owner')
